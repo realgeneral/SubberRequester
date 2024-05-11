@@ -31,8 +31,12 @@ async def fetch_and_parse_data(token):
 
     async with aiohttp.ClientSession() as session:
         async with session.get('https://www.subber.xyz/api/me', cookies=cookies, headers=headers) as response:
+            logging.info(f"status code - {response.status}")
             if response.status == 200:
+
                 data = await response.json()
+                logging.info(f"data - {data}")
+
                 return {
                     "id": data.get("id"),
                     "username": data.get("username"),

@@ -35,7 +35,7 @@ async def fetch_and_parse_data(token):
             if response.status == 200:
 
                 data = await response.json()
-                logging.info(f"data - {data}")
+                logging.info(f"data - {response.text}")
 
                 return {
                     "id": data.get("id"),
